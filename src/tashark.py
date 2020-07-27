@@ -4,7 +4,7 @@ import pyshark
 import subprocess
 import sys
 import argparse
-import db_manager
+import db_utils
 
 frames = []
 interface = ""
@@ -22,7 +22,8 @@ def capture_file():
             if http_layer.get('http.request') and http_layer.get('file_data'):
                 frames.append(http_layer.get_field('file_data'))
 
-    print("Packets received: " + str(number_of_packets))
+    print(f"Packets received: {str(number_of_packets)}")
+    print(f"Frames: {str(len(frames))}")
 
     if len(frames) > 0:
         save_file()
@@ -35,7 +36,7 @@ def save_file():
     file = open('frames/' + file_name, "w")
     for f in frames:
         file.write(str(f) + "\n")
-    db_manager.add_all(frames)
+    db_utils.add_all(frames)
     file.close()
 
 
