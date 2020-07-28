@@ -1,1 +1,1 @@
-create table frames(id int NOT NULL AUTO_INCREMENT, value varchar(255), created_at DATETIME(6), primary key (id));
+create table frames(id int NOT NULL AUTO_INCREMENT, value TEXT(2000), created_at DATETIME(6), primary key (id));

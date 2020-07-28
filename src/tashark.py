@@ -82,10 +82,11 @@ def main(argv):
     if not interface:
         parser.print_help()
 
-    if args.file:
-        file_name = args.file + '.ta'
-    else:
-        file_name = get_file_name('ta')
+    file_name = args.file + '.ta' if args.file else get_file_name('ta')
+    # if args.file:
+    #     file_name = args.file + '.ta'
+    # else:
+    #     file_name = get_file_name('ta')
 
     print('Interface is ', interface)
     print('File name is ', file_name)
